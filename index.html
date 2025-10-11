@@ -12,223 +12,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23111111' rx='12'></rect><text x='50' y='55' font-family='Space Mono, monospace' font-size='65' font-weight='700' fill='%2339FF14' text-anchor='middle' dominant-baseline='middle'>HJ</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
     
-    <style>
-        :root {
-            --primary-color: #39FF14;
-            --background-color: #F5F5F5;
-            --text-color: #111111;
-            --border-color: #111111;
-        }
-
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            font-family: 'Work Sans', sans-serif;
-            cursor: none;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Mono', monospace;
-            font-weight: 700;
-        }
-
-        a, button {
-            cursor: none;
-        }
-
-        .cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
-            pointer-events: none;
-            transition: transform 0.2s ease-out;
-            display: none;
-        }
-        @media (pointer: fine) {
-            .cursor {
-                display: block;
-            }
-        }
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--text-color);
-            border-radius: 50%;
-        }
-        .cursor-ring {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--text-color);
-            border-radius: 50%;
-            transform: translate(-16px, -16px);
-        }
-        body.cursor-hover .cursor-ring {
-            transform: translate(-16px, -16px) scale(1.5);
-            background-color: rgba(57, 255, 20, 0.3);
-        }
-        body.cursor-hover .cursor-dot {
-            background-color: var(--primary-color);
-        }
-
-        .btn-custom {
-            font-family: 'Space Mono', monospace;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            border: 2px solid var(--border-color);
-            border-radius: 0;
-            padding: 12px 30px;
-            font-weight: 700;
-            text-transform: uppercase;
-            box-shadow: 6px 6px 0 var(--border-color);
-            transition: all 0.2s ease-in-out;
-        }
-        .btn-custom:hover {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            box-shadow: 3px 3px 0 var(--border-color);
-            transform: translate(3px, 3px);
-        }
-
-        .navbar {
-            background-color: var(--background-color);
-            border-bottom: 2px solid var(--border-color);
-            padding: 1rem 0;
-        }
-        .navbar-brand {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.5rem;
-        }
-        .navbar-toggler {
-            border: 2px solid var(--text-color);
-            border-radius: 0;
-        }
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2817, 17, 17, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        #home {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-        #home h1 {
-            font-size: clamp(2.5rem, 10vw, 5.5rem);
-            line-height: 1.1;
-            font-weight: 700;
-        }
-        #home #typed-text {
-            color: var(--primary-color);
-            -webkit-text-stroke: 2px var(--text-color);
-        }
-        .hero-socials a {
-            color: var(--text-color);
-            font-size: 2rem;
-            margin: 0 1rem;
-            text-decoration: none;
-            transition: all 0.2s ease-in-out;
-        }
-        .hero-socials a:hover {
-            color: var(--primary-color);
-            transform: scale(1.2);
-        }
-
-        .card-brutalist {
-            background-color: #fff;
-            border: 2px solid var(--border-color);
-            border-radius: 0;
-            box-shadow: 10px 10px 0 var(--border-color);
-            transition: all 0.2s ease-in-out;
-            height: 100%;
-        }
-        .card-brutalist:hover {
-            box-shadow: 4px 4px 0 var(--primary-color);
-            transform: translate(6px, 6px);
-            border-color: var(--primary-color);
-        }
-        
-        .skills-marquee {
-            overflow: hidden;
-            padding: 3rem 0;
-            background-color: var(--primary-color);
-            border-top: 2px solid var(--border-color);
-            border-bottom: 2px solid var(--border-color);
-        }
-        .marquee-content {
-            display: flex;
-            animation: marquee 10s linear infinite;
-        }
-        .skill-tag {
-            font-family: 'Space Mono', monospace;
-            font-size: 2rem;
-            font-weight: 700;
-            padding: 0 2rem;
-            flex-shrink: 0;
-            white-space: nowrap;
-        }
-        .skill-tag::after {
-            content: "•";
-            margin-left: 4rem;
-        }
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        section {
-            padding: 120px 0;
-            overflow: hidden;
-        }
-        .section-title {
-             display: inline-block;
-             border: 2px solid var(--border-color);
-             padding: 10px 20px;
-             background-color: var(--primary-color);
-             margin-bottom: 4rem;
-        }
-        
-        .experience-item {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 2rem;
-            margin-bottom: 2rem;
-        }
-        .experience-item:last-child {
-            border-bottom: 0;
-            margin-bottom: 0;
-        }
-        .experience-item .meta {
-            font-family: 'Space Mono', monospace;
-            font-weight: 700;
-        }
-
-        .social-links a {
-            text-decoration: none;
-            font-size: 1.8rem;
-            margin: 0 0.75rem;
-            transition: all 0.2s ease-in-out;
-        }
-        #contact .social-links a {
-            color: var(--text-color);
-        }
-        #contact .social-links a:hover {
-            color: var(--primary-color);
-            transform: scale(1.1);
-        }
-        footer .social-links a {
-            color: var(--background-color);
-        }
-        footer .social-links a:hover {
-            color: var(--primary-color);
-            transform: scale(1.1);
-        }
-        
-        footer {
-            background-color: var(--text-color);
-            color: var(--background-color);
-            padding: 3rem 0;
-            font-weight: 600;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -243,6 +27,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto text-center">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Work</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -265,6 +50,23 @@
                 <a href="https://github.com/Lazyboyharsh" target="_blank"><i class="fa-brands fa-github"></i></a>
                 <a href="https://www.instagram.com/harsh_jain1_/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://discord.com/users/lazyboyharsh" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-white">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="section-title">ABOUT ME</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center" data-aos="fade-right">
+                    <img src="myportdp.png" alt="Harsh Jain" class="profile-pic">
+                </div>
+                <div class="col-lg-8" data-aos="fade-left">
+                    <p class="fs-5">I'm a passionate and detail-oriented Frontend Developer with hands-on experience in building responsive and visually appealing websites. My journey into web development started with a fascination for how creative design and robust code can come together to create engaging digital experiences.</p>
+                    <p class="fs-5 mt-3">I thrive on creative problem-solving and enjoy exploring new technologies, including leveraging AI tools to enhance my workflow. My goal is to contribute my skills to a dynamic organization while continuing to learn and grow in a collaborative environment.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -315,7 +117,7 @@
                         <div class="card-body p-4">
                             <h4 class="card-title">AGJ Data Infotech Website</h4> 
                             <p class="card-text">Modernized the official company website to improve brand presence and user engagement.</p>
-                            <a href="http://agjdatainfotech.com" class="btn btn-custom" target="_blank">View Live</a>
+                            <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#project1Modal">Details</button>
                         </div>
                     </div>
                 </div>
@@ -324,7 +126,7 @@
                         <div class="card-body p-4">
                             <h4 class="card-title">Weather Web</h4> 
                             <p class="card-text">A dynamic weather app using API data with a background that changes based on the weather.</p>
-                            <a href="https://lazyboyharsh.github.io/WeatherWeb/" class="btn btn-custom" target="_blank">View Live</a>
+                            <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#project2Modal">Details</button>
                         </div>
                     </div>
                 </div>
@@ -333,68 +135,94 @@
     </section>
 
     <section id="contact">
-        <div class="container text-center" data-aos="fade-up">
+        <div class="container" data-aos="fade-up">
              <div class="text-center"><h2 class="section-title">GET IN TOUCH</h2></div>
-             <p class="fs-3">Have an idea? Let's build something cool together.</p>
-             <a href="mailto:hharshjain448@gmail.com" class="btn btn-custom mt-4">hharshjain448@gmail.com</a>
-             <div class="social-links mt-5">
-                <a href="https://linkedin.com/in/harsh-jain-499a0a264" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/Lazyboyharsh" target="_blank"><i class="fa-brands fa-github"></i></a>
-                  <a href="https://www.instagram.com/harsh_jain1_/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://discord.com/users/lazyboyharsh" target="_blank"><i class="fa-brands fa-discord"></i></a>
+             <div class="row justify-content-center">
+                 <div class="col-lg-8">
+                     <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                        <input type="hidden" name="apikey" value="a1f68b7e-c3a7-471a-a338-c258d6b90389">
+                        <input id="formName" class="form-control" type="text" name="name" placeholder="Your Name" required>
+                        <input id="formEmail" class="form-control" type="email" name="email" placeholder="Your Email" required>
+                        <textarea id="formMessage" class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn btn-custom">Send Message</button>
+                     </form>
+                 </div>
              </div>
         </div>
     </section>
 
     <footer>
         <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://linkedin.com/in/harsh-jain-499a0a264" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/Lazyboyharsh" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/harsh_jain1_/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://discord.com/users/lazyboyharsh" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            </div>
             <p class="mb-0">&copy; 2025 Harsh Jain. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <div class="modal fade" id="project1Modal" tabindex="-1" aria-labelledby="project1ModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="project1ModalLabel">AGJ Data Infotech Website</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Goal:</strong> To re-develop and modernize the company's official website, enhancing user engagement and strengthening the brand's online presence.</p>
+            <p><strong>My Role:</strong> I was the primary frontend developer responsible for the design, development, and deployment. I focused on creating a responsive, multi-page layout with modern animations to improve the user experience.</p>
+            <div>
+                <strong>Technologies Used:</strong><br>
+                <span class="tech-badge">HTML</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Bootstrap</span>
+                <span class="tech-badge">Tailwind CSS</span>
+                <span class="tech-badge">AOS</span>
+                <span class="tech-badge">Web3Forms</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="http://agjdatainfotech.com" class="btn btn-custom" target="_blank">View Live</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="project2Modal" tabindex="-1" aria-labelledby="project2ModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="project2ModalLabel">Weather Web</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Goal:</strong> To build a functional and visually dynamic weather application that provides real-time weather data to users in an engaging way.</p>
+            <p><strong>My Role:</strong> I handled the entire development process, from fetching data from a weather API to implementing the dynamic UI. A key challenge was ensuring the background images and icons updated seamlessly based on the weather status.</p>
+            <div>
+                <strong>Technologies Used:</strong><br>
+                <span class="tech-badge">HTML</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Weather API</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="https://lazyboyharsh.github.io/WeatherWeb/" class="btn btn-custom" target="_blank">View Live</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script src="script.js"></script>
 
-    <script>
-        AOS.init({ duration: 800, once: true });
-
-        var options = {
-            strings: ["& Beyond.", "With Style.", "For You."],
-            typeSpeed: 70, backSpeed: 40, backDelay: 1500, loop: true
-        };
-        var typed = new Typed('#typed-text', options);
-
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorRing = document.querySelector('.cursor-ring');
-        const hoverables = document.querySelectorAll('a, button, .card-brutalist');
-
-        window.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            cursorDot.style.transform = `translate(${clientX}px, ${clientY}px)`;
-            cursorRing.style.transform = `translate(${clientX - 16}px, ${clientY - 16}px)`;
-        });
-
-        hoverables.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                document.body.classList.add('cursor-hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                document.body.classList.remove('cursor-hover');
-            });
-        });
-
-        const navLinks = document.querySelectorAll('.nav-link');
-        const menuToggle = document.getElementById('navbarNav');
-        const bsCollapse = new bootstrap.Collapse(menuToggle, { toggle: false });
-
-        navLinks.forEach((link) => {
-            link.addEventListener('click', () => {
-                if (menuToggle.classList.contains('show')) {
-                    bsCollapse.toggle();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
