@@ -126,6 +126,10 @@ body.cursor-hover .cursor-dot {
     box-shadow: 10px 10px 0 var(--border-color);
     transition: all 0.2s ease-in-out;
 }
+
+.col-lg-8 {
+    margin-top: 20px;
+
 .profile-pic:hover {
     box-shadow: 4px 4px 0 var(--primary-color);
     transform: translate(6px, 6px);
@@ -264,4 +268,5 @@ footer {
     margin: 3px;
     font-size: 0.9rem;
     font-weight: 600;
+
 }
