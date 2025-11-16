@@ -84,3 +84,70 @@ document.addEventListener('DOMContentLoaded', () => {
         loadFormData();
     }
 });
+
+
+// === Add this to your script.js ===
+
+// (This can go before or after your Typed.js and AOS.init() code)
+
+tsParticles.load("tsparticles-hero", {
+    fpsLimit: 60,
+    interactivity: {
+        events: {
+            onHover: {
+                enable: true,
+                mode: "grab", // Creates a "grab" effect on hover
+            },
+            onClick: {
+                enable: true,
+                mode: "push", // Pushes particles away on click
+            },
+        },
+        modes: {
+            grab: {
+                distance: 140,
+                links: {
+                    opacity: 0.8,
+                    color: "#39FF14" // Your theme color
+                },
+            },
+            push: {
+                quantity: 4,
+            },
+        },
+    },
+    particles: {
+        color: {
+            value: "#39FF14", // Your theme color
+        },
+        links: {
+            color: "#ffffff", // Line color
+            distance: 150,
+            enable: true,
+            opacity: 0.2, // Subtle links
+            width: 1,
+        },
+        move: {
+            enable: true,
+            speed: 1.5, // Particle speed
+            direction: "none",
+            outModes: "out",
+        },
+        number: {
+            density: {
+                enable: true,
+            },
+            value: 80, // Number of particles
+        },
+        opacity: {
+            value: 0.4, // Particle opacity
+        },
+        shape: {
+            type: "circle",
+        },
+        size: {
+            value: { min: 1, max: 3 },
+        },
+    },
+    detectRetina: true,
+});
