@@ -175,41 +175,50 @@ body.cursor-hover .cursor-dot {
 }
 
 .skills-marquee {
-    overflow-x: auto;
+    /* FIX 1: Use 'hidden', not 'auto'. 'auto' creates the scrollbar/white space */
+    overflow: hidden; 
     padding: 3rem 0;
     background-color: var(--primary-color);
     border-top: 2px solid var(--border-color);
     border-bottom: 2px solid var(--border-color);
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    width: 100%; /* Ensure container takes full width */
+    white-space: nowrap; /* Prevent wrapping */
 }
-.skills-marquee::-webkit-scrollbar {
-    display: none;
-}
+
+/* Remove the scrollbar styling since we are using overflow: hidden now */
+
 .marquee-content {
     display: flex;
-    width: max-content;
+    width: max-content; /* Forces the div to be as wide as the items */
+    /* FIX 2: Ensure animation matches the content duplication logic */
     animation: marquee 30s linear infinite;
 }
-.skills-marquee:hover .marquee-content,
-.skills-marquee:focus-within .marquee-content {
+
+.skills-marquee:hover .marquee-content {
      animation-play-state: paused;
 }
+
 .skill-tag {
     font-family: 'Space Mono', monospace;
     font-size: 2rem;
     font-weight: 700;
     padding: 0 2rem;
-    flex-shrink: 0;
-    white-space: nowrap;
+    /* FIX 3: Ensure items don't shrink causing gaps */
+    flex-shrink: 0; 
+    position: relative;
 }
+
 .skill-tag::after {
     content: "•";
-    margin-left: 4rem;
+    position: absolute;
+    right: 0;
 }
+
 @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    0% { transform: translateX(0); }
+    /* This moves the strip exactly 50% to the left. 
+       Because we duplicated the content, Set 2 replaces Set 1 perfectly. */
+    100% { transform: translateX(-50%); }
 }
 
 section {
